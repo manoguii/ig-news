@@ -1,6 +1,6 @@
 import { NextPage } from 'next'
 import Head from 'next/head'
-import styles from '../../styles/Home.module.scss'
+// import styles from '../../styles/Home.module.scss'
 
 const Home: NextPage = () => {
   return (
@@ -8,7 +8,7 @@ const Home: NextPage = () => {
       <Head>
         <title>Home | Ig.News</title>
       </Head>
-      <h1 className={styles.title}>Hello wolrd</h1>
+      <h1>Hello wolrd</h1>
     </>
   )
 }
