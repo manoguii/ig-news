@@ -2,6 +2,7 @@ import { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../../styles/Home.module.scss'
+import { SubscribeButton } from '../components/SubscribeButton'
 
 const Home: NextPage = () => {
   return (
@@ -20,6 +21,7 @@ const Home: NextPage = () => {
             <br />
             <span>for $9.90 month</span>
           </p>
+          <SubscribeButton />
         </section>
 
         <Image
