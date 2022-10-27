@@ -22,7 +22,6 @@ export const config = {
 
 const relevantEvents = new Set([
   'checkout.session.completed',
-  'customer.subscription.created',
   'customer.subscription.deleted',
   'customer.subscription.updated',
 ])
@@ -50,7 +49,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     if (relevantEvents.has(type)) {
       try {
         switch (type) {
-          case 'customer.subscription.created':
           case 'customer.subscription.deleted':
           case 'customer.subscription.updated':
             // eslint-disable-next-line no-case-declarations
@@ -59,7 +57,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             await saveSubscription(
               subscription.id,
               subscription.customer.toString(),
-              type === 'customer.subscription.created',
+              false,
             )
             break
           case 'checkout.session.completed':
