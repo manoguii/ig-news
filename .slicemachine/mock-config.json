@@ -1,0 +1,15 @@
+{
+  "_cts": {
+    "post": {
+      "title": {
+        "config": {
+          "patternType": "HEADING",
+          "blocks": 1
+        }
+      }
+    }
+  },
+  "slices": {
+    "Ignews": {}
+  }
+}
