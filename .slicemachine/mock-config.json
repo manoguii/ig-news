@@ -6,6 +6,12 @@
           "patternType": "HEADING",
           "blocks": 1
         }
+      },
+      "main": {
+        "config": {
+          "patternType": "PARAGRAPH",
+          "blocks": 15
+        }
       }
     }
   },

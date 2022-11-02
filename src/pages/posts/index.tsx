@@ -1,5 +1,6 @@
 import { GetStaticProps } from 'next'
 import Head from 'next/head'
+import { createClient } from '../../services/prismic'
 import styles from './styles.module.scss'
 
 export default function Posts() {
@@ -41,7 +42,21 @@ export default function Posts() {
   )
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async ({ previewData }) => {
+  const client = createClient({ previewData })
+
+  const page = await client.getAllByType('post', { pageSize: 100 })
+  console.log(page[1].data.main[0].text)
+  // const posts = page.map((post) => {
+  //   return {
+  //     slug: post.uid,
+  //     title: post.data.title[0].text,
+  //     excerpt: post.data.main[0].text,
+  //   }
+  // })
+
+  // console.log(posts)
+
   return {
     props: {},
   }

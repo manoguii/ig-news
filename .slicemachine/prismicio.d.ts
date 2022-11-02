@@ -20,16 +20,16 @@ interface PostDocumentData {
      */
     title: prismicT.TitleField;
     /**
-     * Content field in *Post*
+     * Main field in *Post*
      *
-     * - **Field Type**: Text
+     * - **Field Type**: Rich Text
      * - **Placeholder**: *None*
-     * - **API ID Path**: post.content
+     * - **API ID Path**: post.main
      * - **Tab**: Main
-     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
      *
      */
-    content: prismicT.KeyTextField;
+    main: prismicT.RichTextField;
     /**
      * Slice Zone field in *Post*
      *
