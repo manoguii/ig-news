@@ -3,6 +3,8 @@ import { getSession } from 'next-auth/react'
 import Head from 'next/head'
 import { createClient } from '../../services/prismic'
 import { RichText } from 'prismic-dom'
+import styles from './post.module.scss'
+import { Session } from 'next-auth'
 
 interface PostProps {
   post: {
@@ -13,6 +15,11 @@ interface PostProps {
   }
 }
 
+interface SessionProps extends Session {
+  activeSubscription: string
+  session: Session | null
+}
+
 export default function Post({ post }: PostProps) {
   console.log(post)
   return (
@@ -21,11 +28,14 @@ export default function Post({ post }: PostProps) {
         <title>{post.title} | IgNews </title>
       </Head>
 
-      <main>
-        <article>
+      <main className={styles.container}>
+        <article className={styles.post}>
           <h1>{post.title}</h1>
           <time>{post.updatedAt}</time>
-          <div>{post.content}</div>
+          <div
+            className={styles.postContent}
+            dangerouslySetInnerHTML={{ __html: post.content }}
+          />
         </article>
       </main>
     </>
@@ -36,16 +46,22 @@ export const getServerSideProps: GetServerSideProps = async ({
   req,
   params,
 }) => {
-  const session = await getSession({ req })
+  const session: SessionProps | any = await getSession({ req })
   const { slug }: any = params
-  // if (!session) {
-  // }
+  if (!session.activeSubscription) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      },
+    }
+  }
 
   const prismic = createClient(req)
 
   const response = await prismic.getByUID('post', slug)
 
-  console.log(response.data)
+  console.log(session)
 
   const post = {
     slug,
