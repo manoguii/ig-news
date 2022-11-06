@@ -11,6 +11,11 @@ export default NextAuth({
     GithubProvider({
       clientId,
       clientSecret,
+      authorization: {
+        params: {
+          scope: 'public_repo',
+        },
+      },
     }),
   ],
   callbacks: {
