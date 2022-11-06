@@ -14,7 +14,8 @@ export default NextAuth({
     }),
   ],
   callbacks: {
-    async session({ session }: any) {
+    async session({ session, user, token }) {
+      const emailUser = session.user?.email as string
       try {
         const userActiveSubscription = await fauna.query(
           q.Get(
@@ -24,10 +25,7 @@ export default NextAuth({
                 q.Select(
                   'ref',
                   q.Get(
-                    q.Match(
-                      q.Index('user_by_email'),
-                      q.Casefold(session.user.email),
-                    ),
+                    q.Match(q.Index('user_by_email'), q.Casefold(emailUser)),
                   ),
                 ),
               ),
@@ -47,8 +45,6 @@ export default NextAuth({
       }
     },
     async signIn({ user, account, profile, credentials }) {
-      const { email } = user
-
       try {
         await fauna.query(
           q.If(
@@ -60,7 +56,9 @@ export default NextAuth({
                 ),
               ),
             ),
-            q.Create(q.Collection('users'), { data: { email } }),
+            q.Create(q.Collection('users'), {
+              data: { email: user.email, name: user.name },
+            }),
             q.Get(
               q.Match(
                 q.Index('user_by_email'),
