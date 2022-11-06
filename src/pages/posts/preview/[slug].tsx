@@ -25,7 +25,7 @@ export default function Preview({ post }: PostPreviewProps) {
     if (session?.activeSubscription) {
       router.push(`/posts/${post.slug}`)
     }
-  }, [session])
+  }, [post.slug, router, session])
 
   return (
     <>
@@ -86,5 +86,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     props: {
       post,
     },
+    redirect: 60 * 30,
   }
 }

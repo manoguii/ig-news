@@ -45,7 +45,6 @@ export const getStaticProps: GetStaticProps = async ({ previewData }) => {
   const client = createClient({ previewData })
 
   const page = await client.getAllByType('post', { pageSize: 100 })
-  // console.log(page[1].data.main[0].text)
   const posts = page.map((post) => {
     return {
       slug: post.uid,
