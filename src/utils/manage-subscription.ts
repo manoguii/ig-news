@@ -2,9 +2,12 @@ import { fauna } from '@/services/fauna'
 import { stripe } from '@/services/stripe'
 import { query as q } from 'faunadb'
 
-export async function saveSubscription(
+type OperationData = 'create' | 'update'
+
+export async function manageSubscription(
   subscriptionId: string,
   customerId: string,
+  operation: OperationData,
 ) {
   const userRef = await fauna.query(
     q.Select(
@@ -22,9 +25,27 @@ export async function saveSubscription(
     priceId: subscription.items.data[0].price.id,
   }
 
-  await fauna.query(
-    q.Create(q.Collection('subscriptions'), {
-      data: subscriptionData,
-    }),
-  )
+  if (operation === 'create') {
+    await fauna.query(
+      q.Create(q.Collection('subscriptions'), {
+        data: subscriptionData,
+      }),
+    )
+  }
+
+  if (operation === 'update') {
+    await fauna.query(
+      q.Replace(
+        q.Select(
+          'ref',
+          q.Get(q.Match(q.Index('subscription_by_id'), subscriptionId)),
+        ),
+        {
+          data: {
+            subscriptionData,
+          },
+        },
+      ),
+    )
+  }
 }

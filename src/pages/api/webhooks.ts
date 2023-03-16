@@ -2,10 +2,13 @@ import { stripe } from '@/services/stripe'
 import { NextApiRequest, NextApiResponse } from 'next'
 import { Readable } from 'stream'
 import Stripe from 'stripe'
-import { saveSubscription } from '../../utils/save-subscription'
+import { manageSubscription } from '../../utils/manage-subscription'
 
 type StripeHeaderType = string | Buffer | string[]
-type RelevantEventType = 'checkout.session.completed'
+type RelevantEventType =
+  | 'checkout.session.completed'
+  | 'customer.subscription.deleted'
+  | 'customer.subscription.updated'
 
 async function buffer(readable: Readable) {
   const chunks: any = []
@@ -23,14 +26,16 @@ export const config = {
   },
 }
 
-const relevantEvent = new Set(['checkout.session.completed'])
+const relevantEvent = new Set([
+  'checkout.session.completed',
+  'customer.subscription.deleted',
+  'customer.subscription.updated',
+])
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
-  console.log('🌈🌈🌈 EVENTO RECEBIDO !!!')
-
   if (req.method === 'POST') {
     const buf = await buffer(req)
 
@@ -53,8 +58,24 @@ export default async function handler(
     if (relevantEvent.has(type)) {
       try {
         switch (type) {
+          case 'customer.subscription.deleted':
+          case 'customer.subscription.updated':
+            const subscription = event.data.object as Stripe.Subscription
+
+            if (
+              !subscription.customer ||
+              typeof subscription.customer !== 'string'
+            ) {
+              throw new Error('Subscription.customer not valid ! 🌶️')
+            }
+
+            await manageSubscription(
+              subscription.id,
+              subscription.customer,
+              'update',
+            )
+            break
           case 'checkout.session.completed':
-            // eslint-disable-next-line no-case-declarations
             const checkoutSession = event.data.object as Stripe.Checkout.Session
 
             if (
@@ -71,22 +92,23 @@ export default async function handler(
               throw new Error('CheckoutSession.customer not valid ! 🌶️')
             }
 
-            await saveSubscription(
+            await manageSubscription(
               checkoutSession.subscription,
               checkoutSession.customer,
+              'create',
             )
             break
           default:
             throw new Error('Unhandle event. 🥵')
         }
       } catch (error) {
-        return res.json({ error: 'Webhook handler filed !' })
+        return res.json({ error: 'Webhook handler filed 🥵!' })
       }
     }
 
     return res.json({ received: true })
   } else {
     res.setHeader('Allow', 'POST')
-    res.status(405).end('Method not allowed')
+    res.status(405).end('Method not allowed ')
   }
 }
