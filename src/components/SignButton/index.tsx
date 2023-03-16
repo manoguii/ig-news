@@ -6,8 +6,6 @@ import { signIn, signOut, useSession } from 'next-auth/react'
 export function SignButton() {
   const { data, status } = useSession()
 
-  console.log(status, data)
-
   switch (status) {
     case 'authenticated':
       return (
@@ -39,6 +37,17 @@ export function SignButton() {
         </button>
       )
     default:
-      break
+      return (
+        <button
+          type="button"
+          className={styles.signButton}
+          onClick={() => {
+            signIn('github')
+          }}
+        >
+          <FaGithub color="#EBA417" />
+          Sing in with GitHub
+        </button>
+      )
   }
 }
