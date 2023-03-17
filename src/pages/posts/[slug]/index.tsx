@@ -1,9 +1,11 @@
+/* eslint-disable @next/next/no-img-element */
 import { GetServerSideProps } from 'next'
 import { getServerSession } from 'next-auth'
 import { createClient } from '../../../../prismicio'
 import { authOptions } from '../../api/auth/[...nextauth]'
 import * as prismicH from '@prismicio/helpers'
 import styles from './styles.module.scss'
+import Head from 'next/head'
 
 interface PostProps {
   post: {
@@ -11,13 +13,22 @@ interface PostProps {
     title: string
     updatedAt: string
     content: string
+    imageUrl: string
   }
 }
 
 export default function Post({ post }: PostProps) {
   return (
     <>
+      <Head>
+        <title>{`${post.slug}`} | Ig.news</title>
+      </Head>
+
       <main className={styles.container}>
+        <div className={styles.capa}>
+          <img src={`${post.imageUrl}`} alt="Imagem de capa" />
+        </div>
+
         <article className={styles.post}>
           <time>{post.updatedAt}</time>
           <h1>{post.title}</h1>
@@ -51,7 +62,7 @@ export const getServerSideProps: GetServerSideProps = async ({
 
   const prismic = createClient()
 
-  const response = await prismic.getByUID('post', slug)
+  const response = await prismic.getByUID('posthard', slug)
 
   const lastPublicationDateFormated = new Date(
     response.last_publication_date,
@@ -65,10 +76,13 @@ export const getServerSideProps: GetServerSideProps = async ({
 
   const contentFormated = prismicH.asHTML(response.data.main)
 
+  const imageFormated = prismicH.asImageSrc(response.data.capa)
+
   const post = {
     slug,
     title: titleFormated,
     content: contentFormated,
+    imageUrl: imageFormated,
     updatedAt: lastPublicationDateFormated,
   }
 

@@ -2,6 +2,15 @@
   max-width: 1120px;
   margin: 0 auto;
   padding: 0 2rem;
+
+}
+
+.capa {
+  display: flex;
+  
+  img {
+    width: 100%;
+  }
 }
 
 .post {
@@ -11,6 +20,8 @@
   h1 {
     font-size: 3rem;
     font-weight: 900;
+    text-align: center;
+    margin-top: 2rem;
   }
 
   time {
@@ -36,6 +47,25 @@
   
     li {
       margin: 0.5rem 0;
+    }
+  }
+
+  img {
+    width: 100%;
+  }
+
+  pre {
+    background: var(--gray-700);
+    padding: 1rem;
+    border-radius: 6px;
+  }
+
+  a {
+    text-decoration: underline;
+    transition: color 0.2s ease-out;
+
+    &:hover {
+      color: var(--cyan-500)
     }
   }
 

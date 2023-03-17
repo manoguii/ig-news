@@ -45,7 +45,7 @@ export default function Posts({ posts }: PostsProps) {
 export const getStaticProps: GetStaticProps = async () => {
   const prismic = createClient()
 
-  const response = await prismic.getAllByType('post')
+  const response = await prismic.getAllByType('posthard')
 
   const posts = response.map((post) => {
     const lastPublicationDateFormated = new Date(

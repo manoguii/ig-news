@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { useSession } from 'next-auth/react'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
+import Head from 'next/head'
 
 interface PreviewProps {
   post: {
@@ -29,6 +30,10 @@ export default function Preview({ post }: PreviewProps) {
 
   return (
     <>
+      <Head>
+        <title>Preview | Ig.news</title>
+      </Head>
+
       <main className={styles.container}>
         <article className={styles.post}>
           <time>{post.updatedAt}</time>
@@ -59,7 +64,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   const prismic = createClient()
 
-  const response = await prismic.getByUID('post', slug)
+  const response = await prismic.getByUID('posthard', slug)
 
   const lastPublicationDateFormated = new Date(
     response.last_publication_date,
