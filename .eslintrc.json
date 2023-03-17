@@ -4,6 +4,7 @@
     "@rocketseat/eslint-config/react"
   ],
   "rules": {
-    "no-case-declarations": "off"
+    "no-case-declarations": "off",
+    "react-hooks/exhaustive-deps": "off"
   }
 }
