@@ -6,9 +6,15 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "slicemachine": "start-slicemachine"
   },
   "dependencies": {
+    "@prismicio/client": "6.7.3",
+    "@prismicio/helpers": "2.3.9",
+    "@prismicio/next": "1.0.3",
+    "@prismicio/react": "2.5.2",
+    "@prismicio/slice-simulator-react": "0.2.3",
     "@stripe/stripe-js": "1.49.0",
     "@types/node": "18.15.3",
     "@types/react": "18.0.28",
@@ -27,7 +33,9 @@
     "typescript": "4.9.5"
   },
   "devDependencies": {
+    "@prismicio/types": "0.2.7",
     "@rocketseat/eslint-config": "1.2.0",
-    "@types/next-auth": "3.15.0"
+    "@types/next-auth": "3.15.0",
+    "slice-machine-ui": "0.7.1"
   }
 }
