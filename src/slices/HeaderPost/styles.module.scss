@@ -1,0 +1,35 @@
+.header {
+  max-width: 720px;
+  margin: 4rem auto 6rem;
+
+  h1 {
+    font-size: 3rem;
+    font-weight: 900;
+    text-align: left;
+    margin-top: 2rem;
+    color: var(--gray-200);
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 400;
+    text-align: left;
+    margin-top: 1rem;
+    color: var(--gray-300);
+  }
+
+  p {
+    font-size: 1rem;
+    text-align: left;
+    font-weight: bold;
+    margin-top: 1rem;
+    color: var(--gray-300);
+  }
+
+  time {
+    font-size: 1rem;
+    color: var(--gray-300);
+    margin-top: 1.5rem;
+    display: block;
+  }
+}

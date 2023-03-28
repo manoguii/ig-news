@@ -1,0 +1,47 @@
+[
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {
+      "title": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "heading1",
+            "content": {
+              "text": "Element"
+            }
+          }
+        ]
+      },
+      "sub_title": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "heading2",
+            "content": {
+              "text": "Production"
+            }
+          }
+        ]
+      },
+      "author": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "Tempor eu exercitation Lorem cupidatat cillum aliqua duis aute ut deserunt occaecat nulla est quis nostrud. Ut pariatur labore aliqua ex ea est sunt occaecat veniam do in mollit aute anim commodo. Minim pariatur nisi quis velit."
+            }
+          }
+        ]
+      }
+    },
+    "items": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": []
+      }
+    ]
+  }
+]

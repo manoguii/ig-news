@@ -1,12 +1,18 @@
 import * as prismic from '@prismicio/client'
+import * as prismicNext from '@prismicio/next'
+import sm from './sm.json'
 
-const apiEndpoint = process.env.NEXT_PUBLIC_PRISMIC_API_ENDPOINT as string
+export const repositoryName = prismic.getRepositoryName(sm.apiEndpoint)
 
-export const repositoryName = prismic.getRepositoryName(apiEndpoint)
+export const createClient = (config: prismicNext.CreateClientConfig = {}) => {
+  const client = prismic.createClient(sm.apiEndpoint, {
+    ...config,
+  })
 
-export const createClient = () => {
-  const client = prismic.createClient(apiEndpoint, {
-    accessToken: process.env.PRISMIC_ACCESS_TOKEN,
+  prismicNext.enableAutoPreviews({
+    client,
+    previewData: config.previewData,
+    req: config.req,
   })
 
   return client

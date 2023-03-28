@@ -1,0 +1,232 @@
+[
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {
+      "main": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "Uma semana inteira de conteúdos práticos voltados para programação. O objetivo é específico e direto: treinar e capacitar profissionais que procuram incluir em seus portfólios o que há de mais novo e tendência no mercado de TI no Brasil e no mundo.",
+              "spans": [
+                {
+                  "type": "strong",
+                  "start": 23,
+                  "end": 66
+                },
+                {
+                  "type": "strong",
+                  "start": 176,
+                  "end": 236
+                }
+              ]
+            },
+            "direction": "ltr"
+          },
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "Este artigo é um breve documento sobre tudo que já construímos até aqui e também um preparatório para aqueles que aguardam ansiosamente pela nova edição do evento, a NLW Return.",
+              "spans": [
+                {
+                  "type": "strong",
+                  "start": 14,
+                  "end": 71
+                }
+              ]
+            },
+            "direction": "ltr"
+          },
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "A NLW é um marco na construção da Rocketseat e de nossa comunidade. Ela retorna em sua oitava edição mais madura do que nunca, com uma base fortalecida pelo que há de melhor neste ecossistema. Uma semana de código que propõe dar aos participantes a oportunidade de desbloquear conquistas que, como o nome já indica, podem levá-los ao próximo nível.",
+              "spans": [
+                {
+                  "type": "strong",
+                  "start": 7,
+                  "end": 44
+                }
+              ]
+            },
+            "direction": "ltr"
+          },
+          {
+            "type": "heading1",
+            "content": {
+              "text": "Semana Omnistack",
+              "spans": []
+            },
+            "direction": "ltr"
+          },
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "Ser dev fullstack garante muito mais que um status no LinkedIn ou nas redes sociais. Na verdade é uma definição que determina a sua experiência como dev, independente de ser júnior, pleno ou sênior. Ser fullstack é dominar todas as frentes da programação e ter bagagem de conhecimento suficiente para programar com mais autonomia e desempenho.",
+              "spans": [
+                {
+                  "type": "strong",
+                  "start": 102,
+                  "end": 153
+                }
+              ]
+            },
+            "direction": "ltr"
+          },
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "De uma forma mais ilustrada, ser fullstack é dominar tecnologias que são onipresentes no mercado, que fazem parte de um ecossistema cada vez mais robusto. É um diferencial para quem quer ocupar um espaço neste próximo nível.",
+              "spans": [
+                {
+                  "type": "strong",
+                  "start": 45,
+                  "end": 97
+                }
+              ]
+            },
+            "direction": "ltr"
+          },
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "Antes de evoluir para a Next Level Week, o nosso evento se chamava Omnistack e, apesar de propósitos semelhantes, a Semana Omnistack focava em um grupo seleto de tecnologias, vistas na época como onipresentes em dispositivos e no mercado.",
+              "spans": [
+                {
+                  "type": "strong",
+                  "start": 67,
+                  "end": 77
+                }
+              ]
+            },
+            "direction": "ltr"
+          },
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "A última edição do evento aconteceu há dois anos, em 2020. Depois dela, promovemos uma mudança de mindset e entrega que superou nossas expectativas na NLW. Passamos a olhar para todo o ecossistema, com a mesma intensidade e foco nos objetivos, com trilhas que incluem diversas outras tecnologias referentes.",
+              "spans": [
+                {
+                  "type": "strong",
+                  "start": 87,
+                  "end": 98
+                },
+                {
+                  "type": "em",
+                  "start": 98,
+                  "end": 106
+                },
+                {
+                  "type": "strong",
+                  "start": 98,
+                  "end": 106
+                },
+                {
+                  "type": "strong",
+                  "start": 167,
+                  "end": 197
+                }
+              ]
+            },
+            "direction": "ltr"
+          },
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "Vale inclusive lembrar deste acontecimento, de quando o Diego Fernandes explicou, na Campus Party, a origem do nome e o que nos motivava naquela época. A gente procurava ensinar “produtividade e performance de forma enxuta” de forma gratuita. Isso permanece até hoje como filosofia guia em nossa comunidade.",
+              "spans": [
+                {
+                  "type": "strong",
+                  "start": 178,
+                  "end": 223
+                }
+              ]
+            },
+            "direction": "ltr"
+          },
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "O foco, como mostra a imagem a seguir, era voltado para três frentes de tecnologia: NodeJS, React Native e ReactJS.",
+              "spans": []
+            },
+            "direction": "ltr"
+          },
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "Uma das atividades que levamos adiante, foi o exercício coletivo de programar uma aplicação com a comunidade, com o intuito de pôr em prática o que era ensinado durante os dias de evento. Na última edição da Omnistack, aprendemos a desenvolver um aplicativo chamado Be The Hero, uma plataforma para unir ONGs que necessitam de apoio financeiro com pessoas interessadas em apoiar as causas.",
+              "spans": [
+                {
+                  "type": "strong",
+                  "start": 44,
+                  "end": 109
+                }
+              ]
+            },
+            "direction": "ltr"
+          },
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "Dois anos atrás, Alexandre Severo fez um artigo em seu Medium particular explicando passo a passo do que aconteceu durante o evento. Valeuzão, Alexandre!",
+              "spans": []
+            },
+            "direction": "ltr"
+          }
+        ]
+      }
+    },
+    "items": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          [
+            "content_repeatable",
+            {
+              "__TYPE__": "StructuredTextContent",
+              "value": [
+                {
+                  "type": "paragraph",
+                  "content": {
+                    "text": "Consequat esse magna fugiat ullamco commodo. Consequat laboris eu pariatur ut incididunt in commodo nostrud id Lorem pariatur id consequat. Duis laborum occaecat qui velit ea ullamco exercitation excepteur reprehenderit nisi velit ea."
+                  }
+                }
+              ]
+            }
+          ],
+          [
+            "code",
+            {
+              "embed_url": "https://twitter.com/prismicio/status/1354835716430319617",
+              "author_name": "Prismic",
+              "author_url": "https://twitter.com/prismicio",
+              "html": "<blockquote class=\"twitter-tweet\"><p lang=\"en\" dir=\"ltr\">Does anyone want to create a wildly popular website for discussing &#39;Wall Street Bets&#39; using Prismic?<br><br>It may or may not have to look a lot like <a href=\"https://twitter.com/hashtag/reddit?src=hash&amp;ref_src=twsrc%5Etfw\">#reddit</a> and we won&#39;t make it private.<br><br>Just asking for some friends...</p>&mdash; Prismic (@prismicio) <a href=\"https://twitter.com/prismicio/status/1354835716430319617?ref_src=twsrc%5Etfw\">January 28, 2021</a></blockquote>\n<script async src=\"https://platform.twitter.com/widgets.js\" charset=\"utf-8\"></script>\n",
+              "width": 550,
+              "height": null,
+              "type": "rich",
+              "cache_age": "3153600000",
+              "provider_name": "Twitter",
+              "provider_url": "http://www.twitter.com/",
+              "version": "1.0",
+              "__TYPE__": "EmbedContent",
+              "all": {
+                "embed_url": "https://twitter.com/prismicio/status/1354835716430319617",
+                "type": "rich",
+                "author_name": "Prismic",
+                "author_url": "https://twitter.com/prismicio",
+                "cache_age": "3153600000",
+                "html": "<blockquote class=\"twitter-tweet\"><p lang=\"en\" dir=\"ltr\">Does anyone want to create a wildly popular website for discussing &#39;Wall Street Bets&#39; using Prismic?<br><br>It may or may not have to look a lot like <a href=\"https://twitter.com/hashtag/reddit?src=hash&amp;ref_src=twsrc%5Etfw\">#reddit</a> and we won&#39;t make it private.<br><br>Just asking for some friends...</p>&mdash; Prismic (@prismicio) <a href=\"https://twitter.com/prismicio/status/1354835716430319617?ref_src=twsrc%5Etfw\">January 28, 2021</a></blockquote>\n<script async src=\"https://platform.twitter.com/widgets.js\" charset=\"utf-8\"></script>\n",
+                "provider_name": "Twitter",
+                "provider_url": "http://www.twitter.com/",
+                "version": "1.0"
+              }
+            }
+          ]
+        ]
+      }
+    ]
+  }
+]

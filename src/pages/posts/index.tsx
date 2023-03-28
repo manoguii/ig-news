@@ -42,13 +42,16 @@ export default function Posts({ posts }: PostsProps) {
   )
 }
 
-export const getStaticProps: GetStaticProps = async () => {
-  const prismic = createClient()
+export const getStaticProps: GetStaticProps = async ({ previewData }) => {
+  const prismic = createClient({
+    accessToken: process.env.PRISMIC_ACCESS_TOKEN,
+    previewData,
+  })
 
-  const response = await prismic.getAllByType('posthard')
+  const response = await prismic.getAllByType('posts')
 
   const posts = response.map((post) => {
-    const lastPublicationDateFormated = new Date(
+    const lastPublicationDateFormatted = new Date(
       post.last_publication_date,
     ).toLocaleDateString('pt-BR', {
       day: '2-digit',
@@ -56,16 +59,24 @@ export const getStaticProps: GetStaticProps = async () => {
       year: 'numeric',
     })
 
-    const titleFormated = prismicH.asText(post.data.title)
+    const titleFormatted = prismicH.asText(
+      post.data.slices.find((slice) => {
+        return slice.slice_type === 'header_post'
+      })?.primary.title,
+    )
 
-    const firstParagraph = post.data.main.find((content: any) => {
-      return content.type === 'paragraph' ?? ''
-    })
+    const firstParagraph = post.data.slices
+      .find((slice) => {
+        return slice.slice_type === 'main_post'
+      })
+      ?.primary.main.find((content: any) => {
+        return content.type === 'paragraph' ?? ''
+      })
 
     return {
       slug: post.uid,
-      title: titleFormated,
-      updatedAt: lastPublicationDateFormated,
+      title: titleFormatted,
+      updatedAt: lastPublicationDateFormatted,
       summary: firstParagraph,
     }
   })

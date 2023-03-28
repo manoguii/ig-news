@@ -13,11 +13,6 @@ out/
 # production
 build
 
-# prismic 
-.slicemachine
-customtypes
-slices
-
 # misc
 .DS_Store
 *.pem

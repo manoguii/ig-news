@@ -43,7 +43,7 @@ export const authOptions: NextAuthOptions = {
 
     async session({ session }) {
       try {
-        const userActiveSubscription = await fauna.query(
+        const userActiveSubscription: any = await fauna.query(
           q.Get(
             q.Intersection([
               q.Match(

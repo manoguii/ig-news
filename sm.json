@@ -1,8 +1,8 @@
 {
-  "apiEndpoint": "https://inewsweb.cdn.prismic.io/api/v2",
+  "apiEndpoint": "https://inewsweb.prismic.io/api/v2",
   "localSliceSimulatorURL": "http://localhost:3000/slice-simulator",
   "libraries": [
-    "@/slices"
+    "@/src/slices"
   ],
   "_latest": "0.7.1"
 }

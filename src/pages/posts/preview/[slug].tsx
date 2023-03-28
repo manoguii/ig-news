@@ -59,30 +59,46 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 }
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getStaticProps: GetStaticProps = async ({
+  params,
+  previewData,
+}) => {
   const slug = params?.slug as string
 
-  const prismic = createClient()
+  const prismic = createClient({
+    accessToken: process.env.PRISMIC_ACCESS_TOKEN,
+    previewData,
+  })
 
-  const response = await prismic.getByUID('posthard', slug)
+  const page = await prismic.getByUID('posts', slug)
 
-  const lastPublicationDateFormated = new Date(
-    response.last_publication_date,
+  const lastPublicationDateFormatted = new Date(
+    page.last_publication_date,
   ).toLocaleDateString('pt-BR', {
     day: '2-digit',
     month: 'long',
     year: 'numeric',
   })
 
-  const titleFormated = prismicH.asText(response.data.title)
+  const titleFormatted = prismicH.asText(
+    page.data.slices.find((slice) => {
+      return slice.slice_type === 'header_post'
+    })?.primary.title,
+  )
 
-  const contentFormated = prismicH.asHTML(response.data.main.splice(0, 4))
+  const smallPiecesOfContentFormatted = prismicH.asHTML(
+    page.data.slices
+      .find((slice) => {
+        return slice.slice_type === 'main_post'
+      })
+      ?.primary.main.splice(0, 4),
+  )
 
   const post = {
     slug,
-    title: titleFormated,
-    content: contentFormated,
-    updatedAt: lastPublicationDateFormated,
+    title: titleFormatted,
+    content: smallPiecesOfContentFormatted,
+    updatedAt: lastPublicationDateFormatted,
   }
 
   return {
