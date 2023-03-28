@@ -12,34 +12,66 @@
   <img src="assets/ig-news.png" alt="faladev" >
 </div>
 
+---
+
 ## Instalação
 
-```bash
-# Clone o repositório
-$ git clone https://github.com/manoguii/ig-news.git
-# Entre no repositório
-$ cd ig-news
-# Criar as variáveis ambiente em
-$ .env
-# Instale as dependências
+### Requisitos
+
+- [Stripe CLI](https://stripe.com/docs/stripe-cli)
+
+### Primeiro você precisa criar uma conta nas plataformas na qual o projeto tem integração
+
+- [Stripe](https://stripe.com/br)
+- [Fauna](https://fauna.com/home)
+- [GitHub](https://github.com)
+- [Prismic](https://prismic.io/)
+
+### Após isso, clonar este repositório:
+
+```sh
+  $ git clone https://github.com/manoguii/ig-news.git
+```
+
+### Crie um arquivo ```.env.local``` na raiz do projeto e preencha as variáveis ambiente, o exemplo de como deve ficar esta em ```.env.local.example```
+
+### Instale as dependências
+
+```
 $ npm install
-# Execute a aplicação
+```
+
+### Execute a aplicação
+
+```bash
+# Execute stripe listen para ouvir eventos do webhook
+$ stripe listen --forward-to localhost:3000/api/webhooks 
+$ npm build
 $ npm run start
 ```
 
+---
+
 ## Sobre
 
-O ig-news é uma plataforma de conteúdo de texto, permite aos usuários acessar o conteúdo dos posts com uma assinatura mensal, integrado com stripe para gerenciar pagamentos, prismic io para gerenciar conteudo dos posts, github para fazer login no site e banco de dados da fauna. 🚀
+O ig-news é uma plataforma de conteúdo de texto, permite aos usuários acessar o conteúdo dos posts com uma assinatura mensal, integrado com stripe para gerenciar pagamentos, prismic io para gerenciar conteúdo dos posts, github para fazer login no site e banco de dados fauna. 🚀
 
 
-## Tecnologias utilizadas 👩🏻‍💻
+---
 
-<div style="display:flex!important;">
-<a href="https://reactjs.org/"><img align="center" alt="Hideki-React" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg"></a>
-<a href="https://www.typescriptlang.org/"><img align="center" alt="Hideki-Ts" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-plain.svg"></a>
-<a href="https://nextjs.org/"><img align="center" alt="Hideki-HTML" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nextjs/nextjs-original.svg"></a>
-</div>
+## Tecnologias 
+
+Abaixo as tecnologias utilizadas para construção da aplicação
+
+- [ReactJS](https://reactjs.org/)
+- [NextJS](https://nextjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [SASS](https://sass-lang.com/)
+- [Next-Auth](https://next-auth.js.org/)
+- [Stripe](https://stripe.com/)
+- [FaunaDB](https://fauna.com/)
+- [Prismic CMS](https://prismic.io/)
   
-##
+---
 
 <p align="center">Made with 💙 by Guilherme David</p>
