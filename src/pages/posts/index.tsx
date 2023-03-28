@@ -4,6 +4,10 @@ import { createClient } from '../../../prismicio'
 import styles from './styles.module.scss'
 import * as prismicH from '@prismicio/helpers'
 import Link from 'next/link'
+import {
+  HeaderPostSliceDefaultPrimary,
+  MainPostSliceDefaultPrimary,
+} from '../../../.slicemachine/prismicio'
 
 interface Post {
   slug: string
@@ -59,19 +63,19 @@ export const getStaticProps: GetStaticProps = async ({ previewData }) => {
       year: 'numeric',
     })
 
-    const titleFormatted = prismicH.asText(
-      post.data.slices.find((slice) => {
-        return slice.slice_type === 'header_post'
-      })?.primary.title,
-    )
+    const headerPostSlice = post.data.slices.find((slice) => {
+      return slice.slice_type === 'header_post'
+    })?.primary as HeaderPostSliceDefaultPrimary
 
-    const firstParagraph = post.data.slices
-      .find((slice) => {
-        return slice.slice_type === 'main_post'
-      })
-      ?.primary.main.find((content: any) => {
-        return content.type === 'paragraph' ?? ''
-      })
+    const titleFormatted = prismicH.asText(headerPostSlice.title)
+
+    const mainPostSlice = post.data.slices.find((slice) => {
+      return slice.slice_type === 'main_post'
+    })?.primary as MainPostSliceDefaultPrimary
+
+    const firstParagraph = mainPostSlice.main.find((content) => {
+      return content.type === 'paragraph' ?? ''
+    })
 
     return {
       slug: post.uid,

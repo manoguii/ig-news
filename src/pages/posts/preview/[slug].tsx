@@ -1,12 +1,17 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { createClient } from '../../../../prismicio'
 import * as prismicH from '@prismicio/helpers'
-import styles from '../[slug]/styles.module.scss'
+import styles from './styles.module.scss'
 import Link from 'next/link'
 import { useSession } from 'next-auth/react'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
+import { RTNode } from '@prismicio/types'
+import {
+  HeaderPostSliceDefaultPrimary,
+  MainPostSliceDefaultPrimary,
+} from '../../../../.slicemachine/prismicio'
 
 interface PreviewProps {
   post: {
@@ -80,24 +85,27 @@ export const getStaticProps: GetStaticProps = async ({
     year: 'numeric',
   })
 
-  const titleFormatted = prismicH.asText(
-    page.data.slices.find((slice) => {
-      return slice.slice_type === 'header_post'
-    })?.primary.title,
-  )
+  const headerPostSlice = page.data.slices.find((slice) => {
+    return slice.slice_type === 'header_post'
+  })?.primary as HeaderPostSliceDefaultPrimary
 
-  const smallPiecesOfContentFormatted = prismicH.asHTML(
-    page.data.slices
-      .find((slice) => {
-        return slice.slice_type === 'main_post'
-      })
-      ?.primary.main.splice(0, 4),
-  )
+  const titleFormatted = prismicH.asText(headerPostSlice.title)
+
+  const mainPostSlice = page.data.slices.find((slice) => {
+    return slice.slice_type === 'main_post'
+  })?.primary as MainPostSliceDefaultPrimary
+
+  const smallPartsOfContentFormatted = mainPostSlice.main.splice(0, 4) as [
+    RTNode,
+    ...RTNode[],
+  ]
+
+  const contentFormatted = prismicH.asHTML(smallPartsOfContentFormatted)
 
   const post = {
     slug,
     title: titleFormatted,
-    content: smallPiecesOfContentFormatted,
+    content: contentFormatted,
     updatedAt: lastPublicationDateFormatted,
   }
 
