@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  @apply box-border
+}
+
+body {
+  @apply antialiased bg-gray-background text-gray-text
+}
+
+button {
+  @apply cursor-pointer
+}

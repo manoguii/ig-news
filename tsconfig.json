@@ -18,6 +18,11 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
     "paths": {
       "@/*": [
         "./src/*"
@@ -28,8 +33,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "slices/AdditionalContent/index.ts",
-    "./.slicemachine/prismicio.d.ts"
+    ".next/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"
