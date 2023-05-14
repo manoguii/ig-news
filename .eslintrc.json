@@ -4,7 +4,9 @@
     "@rocketseat/eslint-config/react",
     "plugin:tailwindcss/recommended"
   ],
-  "rules": {},
+  "rules": {
+    "no-case-declarations": "off"
+  },
   "plugins": [
     "tailwindcss"
   ]

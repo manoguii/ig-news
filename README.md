@@ -9,7 +9,7 @@
 </p>
 
 <div align="left">
-  <img src="assets/ig-news.png" alt="faladev" >
+  <img src="public/ig-news.png" alt="faladev" >
 </div>
 
 ## Instalação
@@ -17,16 +17,10 @@
 - Primeiro você precisa criar uma conta nas plataformas na qual o projeto tem integração
 
 - [x] [Stripe](https://stripe.com/br)
-- [x] [Fauna](https://fauna.com/home)
 - [x] [GitHub](https://github.com)
 - [x] [Prismic](https://prismic.io/)
 
-- Instalar a CLI do stripe para ouvir webhooks
-  
-- [x] [Stripe CLI](https://stripe.com/docs/stripe-cli)
-
-
-- Após isso, clonar este repositório:
+- Clonar este repositório:
 ```sh
   $ git clone https://github.com/manoguii/ig-news.git
 ```
@@ -34,19 +28,42 @@
 - Crie um arquivo ```.env.local``` na raiz do projeto e preencha as variáveis ambiente, o exemplo de como deve ficar esta em ```.env.local.example```
 
 - Instale as dependências
-```
-$ npm install
+```sh
+$ pnpm install
 ```
 
-- Execute stripe listen para ouvir eventos do webhook
+- Crie o banco de dados local
 ```bash
-$ stripe listen --forward-to localhost:3000/api/webhooks
+$ docker run --name ig-news -e MYSQL_ROOT_PASSWORD=docker -p 3306:3306 mysql:latest
+```
+
+- Instalar a CLI do stripe para ouvir webhooks
+  
+- [x] [Stripe CLI](https://stripe.com/docs/stripe-cli)
+
+- Faça login na CLI do stripe
+```sh
+  $ stripe login
+```
+
+- Execute o comando abaixo para ouvir os webhooks
+```sh
+  $ stripe listen --forward-to localhost:3000/api/webhooks
+```
+
+- Apos executar o comando acima, copie a chave gerada em ...
+```bash
+  $ "Ready! You are using Stripe API Version [2022-08-01]. Your webhook signing secret is ${CHAVE STRIPE}"
+```
+
+- Colar a chave Stripe em ```.env.local```
+```bash
+  $ STRIPE_WEBHOOK_SECRET="${CHAVE STRIPE}"
 ```
 
 - Execute a aplicação
 ```bash
-$ npm run build
-$ npm run start
+$ pnpm dev
 ```
 
 ## Sobre
@@ -61,7 +78,6 @@ Abaixo as tecnologias utilizadas para construção da aplicação
 - [NextJS](https://nextjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Stripe](https://stripe.com/)
-- [FaunaDB](https://fauna.com/)
 - [Prismic CMS](https://prismic.io/)
 
 ---

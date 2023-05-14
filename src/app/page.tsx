@@ -1,5 +1,6 @@
 import { SubscribeButton } from '@/components/SubscribeButton'
 import GirlCoding from '../assets/Mulher.svg'
+import Balancer from 'react-wrap-balancer'
 import Image from 'next/image'
 import { stripe } from '@/services/stripe'
 import { formatPrice } from '@/utils/format-price'
@@ -26,13 +27,17 @@ export default async function Home() {
           👋 Hey, welcome
         </span>
         <h1 className="mt-8 text-7xl font-black text-gray-title">
-          News about the <span className="text-blue-500">React</span> world
+          <Balancer>
+            News about the <span className="text-blue-500">React</span> world
+          </Balancer>
         </h1>
         <p className="mt-6 text-2xl text-gray-title">
-          Get access to all the publications <br />
-          <span className="font-bold text-blue-500">
-            for {product.amount} month
-          </span>
+          <Balancer>
+            Get access to all the publications <br />
+            <span className="font-bold text-blue-500">
+              for {product.amount} month
+            </span>
+          </Balancer>
         </p>
 
         <SubscribeButton priceId={product.priceId} />
