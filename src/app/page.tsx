@@ -27,9 +27,7 @@ export default async function Home() {
           👋 Hey, welcome
         </span>
         <h1 className="mt-8 text-7xl font-black text-gray-title">
-          <Balancer>
-            News about the <span className="text-blue-500">React</span> world
-          </Balancer>
+          News about the <span className="text-blue-500">React</span> world
         </h1>
         <p className="mt-6 text-2xl text-gray-title">
           <Balancer>

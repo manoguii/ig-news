@@ -45,8 +45,6 @@ export default async function subscribe(
     customer: stripeCustomerId,
   })
 
-  console.log('subscription => 🌊🌊', subscription.data.length)
-
   if (subscription.data.length > 0) {
     return res.status(400).json({
       message: 'There is already an active subscription for this user !',
